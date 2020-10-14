@@ -39,6 +39,8 @@ dependencies:
   flutter_bloc:
   expandable: ^4.1.4
   equatable:
+  meta:
+  rxdart:
   font_awesome_flutter:
 
 dev_dependencies:
