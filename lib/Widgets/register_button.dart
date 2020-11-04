@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-class LoginButton extends StatelessWidget {
+class RegisterButton extends StatelessWidget {
   final VoidCallback _onPressed;
-  const LoginButton({Key key, @required VoidCallback onPressed})
-      : _onPressed = onPressed,
-        super(key: key);
+  const RegisterButton({Key key, @required VoidCallback onPressed}) : _onPressed = onPressed, super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class LoginButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(25.0),
           ),
           child: Text(
-            "Login",
+            "Register",
             style: TextStyle(
               color: Colors.white,
               fontSize: 17.0,
