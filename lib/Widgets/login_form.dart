@@ -1,5 +1,6 @@
 import 'package:Novelty/blocs/authentication_bloc/bloc.dart';
 import 'package:Novelty/blocs/login_bloc/bloc.dart';
+import 'package:Novelty/screens/signup_screen.dart';
 import 'package:Novelty/user_repository.dart';
 import 'package:Novelty/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +28,10 @@ class _LoginFormState extends State<LoginForm> {
   bool get isPopulated =>
       _emailController.text.isNotEmpty && _passwordController.text.isNotEmpty;
 
-  bool loginButtonEnabled(LoginState state){
+  bool loginButtonEnabled(LoginState state) {
     return state.isFormValid && isPopulated && !state.isSubmitting;
   }
+
   @override
   void initState() {
     super.initState();
@@ -41,8 +43,11 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return BlocListener(
+      cubit: _loginBloc,
       listener: (context, state) {
         if (state.isFailure) {
+          //Failed Login
+          //Execute this bloc
           Scaffold.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
@@ -57,6 +62,8 @@ class _LoginFormState extends State<LoginForm> {
         }
 
         if (state.isSubmitting) {
+          //Submitting Form
+          //Execute this block
           Scaffold.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
@@ -74,6 +81,8 @@ class _LoginFormState extends State<LoginForm> {
         }
 
         if (state.isSuccess) {
+          //Login successfull
+          //Navigate to home screen
           BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
         }
       },
@@ -147,10 +156,9 @@ class _LoginFormState extends State<LoginForm> {
                       height: 16.0,
                     ),
                     LoginButton(
-                      onPressed: loginButtonEnabled(state)
-                              ? _onFormSubmitted
-                              : null,
-                      ),
+                      onPressed:
+                          loginButtonEnabled(state) ? _onFormSubmitted : null,
+                    ),
                     SizedBox(
                       height: 8.0,
                     ),
@@ -171,12 +179,20 @@ class _LoginFormState extends State<LoginForm> {
                         SizedBox(
                           width: 6.0,
                         ),
-                        Text(
-                          "Register Now!!",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17.0,
-                            decoration: TextDecoration.underline,
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RegisterScreen(
+                                    userRepository: widget._userRepository),
+                              )),
+                          child: Text(
+                            "Register Now!!",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17.0,
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ),
                       ],

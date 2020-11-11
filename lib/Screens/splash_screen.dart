@@ -9,7 +9,10 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: Color.fromRGBO(3, 8, 24, 3),
       body: Center(
         child: Text(
-          "Splash Screen"
+          "Splash Screen",
+          style: TextStyle(
+            fontSize: 35.0
+          ),
         ),
       ),
     );

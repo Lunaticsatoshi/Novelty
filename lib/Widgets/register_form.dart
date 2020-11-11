@@ -39,8 +39,11 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     return BlocListener(
+      cubit: _registerBloc,
       listener: (context, state) {
         if (state.isFailure) {
+          //Failed Registration
+          //Execute this bloc
           Scaffold.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
@@ -58,6 +61,8 @@ class _RegisterFormState extends State<RegisterForm> {
         }
 
         if (state.isSubmitting) {
+          //Submitting Form
+          //Execute this block
           Scaffold.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
@@ -73,11 +78,16 @@ class _RegisterFormState extends State<RegisterForm> {
             );
         }
         if (state.isSuccess) {
+          //Registration successfull
+          //Navigate to home screen
           BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
+          Navigator.of(context)
+              .pop(); //Remove in production and further testing
         }
       },
       child:
           BlocBuilder<RegisterBloc, RegisterState>(builder: (context, state) {
+        //Widget Tree
         return SingleChildScrollView(
           child: Container(
             height: MediaQuery.of(context).size.height - 50,
@@ -104,7 +114,9 @@ class _RegisterFormState extends State<RegisterForm> {
                       autovalidate: true,
                       autocorrect: false,
                       validator: (_) {
-                        return !state.isEmailValid ? 'Email Must Contain atleast 8 letters and numbers' : null;
+                        return !state.isEmailValid
+                            ? 'Email Must Contain atleast 8 letters and numbers'
+                            : null;
                       },
                     ),
                     TextFormField(
@@ -133,8 +145,10 @@ class _RegisterFormState extends State<RegisterForm> {
                       height: 16.0,
                     ),
                     RegisterButton(
-                      onPressed: registerButtonEnabled(state) ? _onFormSubmitted : null,
-                      ),
+                      onPressed: registerButtonEnabled(state)
+                          ? _onFormSubmitted
+                          : null,
+                    ),
                   ],
                 ),
               ),

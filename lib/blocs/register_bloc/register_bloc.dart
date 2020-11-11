@@ -12,7 +12,7 @@ import 'package:meta/meta.dart';
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   final UserRepository _userRepository;
   RegisterBloc({@required UserRepository userRepository})      : assert(userRepository != null),
-        _userRepository = userRepository, super(null);
+        _userRepository = userRepository, super(RegisterState.empty());
 
   @override
   RegisterState get initialState => RegisterState.empty();
