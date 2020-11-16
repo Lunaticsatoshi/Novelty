@@ -28,29 +28,29 @@ Made using Flutter and Firebase as a part of personal project
 
 ### User modules
 * [x] Authenticate User
-* [] Create Firestore for Users
-* [] Setup Screen Navigations
-* [] Design and create Profile
-* [] Edit Profile Screen
-* [] Follow User Mechanism
-* [] Display User Posts
-* [] Search For Users
+* [ ] Create Firestore for Users
+* [ ] Setup Screen Navigations
+* [ ] Design and create Profile
+* [ ] Edit Profile Screen
+* [ ] Follow User Mechanism
+* [ ] Display User Posts
+* [ ] Search For Users
 
 ### Home Module
-* [] Display Feed Posts
-* [] Display User posts
-* [] Like Post
-* [] Comment on post
+* [ ] Display Feed Posts
+* [ ] Display User posts
+* [ ] Like Post
+* [ ] Comment on post
 
 
 ### Upload Posts
-* [] Create Posts
-* [] Save Posts in Firestore and storage
-* [] Add Post to followers Feed 
+* [ ] Create Posts
+* [ ] Save Posts in Firestore and storage
+* [ ] Add Post to followers Feed 
 
 ### Notifications
-* [] Notifications for likes
-* [] Notifications for comments
-* [] Notification for user follo
+* [ ] Notifications for likes
+* [ ] Notifications for comments
+* [ ] Notification for user follo
 
 #### More To be added soon
